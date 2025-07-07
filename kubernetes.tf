@@ -72,14 +72,14 @@ resource "kubernetes_service_account" "service_accounts" {
 
 # Storage classes
 resource "kubernetes_storage_class" "filestore_storage_class" {
-  count = var.filestore_storage_class ? 1 : 0
+  count = var.filestore.enabled == true ? 1 : 0
 
   metadata {
     name = "filestore"
   }
   storage_provisioner = "filestore.csi.storage.gke.io"
   parameters = {
-    tier    = var.filestore_tier
+    tier    = var.filestore.tier
     network = "gke-application-cluster-vpc"
   }
 }

@@ -20,15 +20,12 @@ variable "namespaces" {
   default     = []
 }
 
-variable "filestore_storage_class" {
-  description = "Enable the GKE Filestore CSI driver."
-  type        = bool
-  default     = false
-}
-
-variable "filestore_tier" {
+variable "filestore" {
   description = "The tier of storage to use"
-  type        = string
-  default     = null
+  type = object({
+    enabled = optional(bool, false)
+    tier    = optional(string, "standard")
+  })
+  default = {}
 }
 
