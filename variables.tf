@@ -25,3 +25,10 @@ variable "filestore_storage_class" {
   type        = bool
   default     = false
 }
+
+variable "filestore_tier" {
+  description = "The tier of storage to use"
+  type        = string
+  default     = null
+}
+
