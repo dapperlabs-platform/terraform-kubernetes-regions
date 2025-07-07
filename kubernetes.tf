@@ -79,7 +79,7 @@ resource "kubernetes_storage_class" "filestore_storage_class" {
   }
   storage_provisioner = "filestore.csi.storage.gke.io"
   parameters = {
-    tier    = var.addons.gcp_filestore_csi_driver_config.tier
+    tier    = var.filestore_tier
     network = "gke-application-cluster-vpc"
   }
 }
