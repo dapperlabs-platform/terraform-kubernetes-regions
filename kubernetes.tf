@@ -70,3 +70,16 @@ resource "kubernetes_service_account" "service_accounts" {
   automount_service_account_token = each.value.automount_service_account_token
 }
 
+# Storage classes
+resource "kubernetes_storage_class" "filestore_storage_class" {
+  count = var.filestore_storage_class ? 1 : 0
+
+  metadata {
+    name = "filestore"
+  }
+  storage_provisioner = "filestore.csi.storage.gke.io"
+  parameters = {
+    tier    = var.addons.gcp_filestore_csi_driver_config.tier
+    network = "gke-application-cluster-vpc"
+  }
+}
