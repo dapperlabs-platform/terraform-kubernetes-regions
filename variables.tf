@@ -19,3 +19,9 @@ variable "namespaces" {
   type        = list(string)
   default     = []
 }
+
+variable "filestore_storage_class" {
+  description = "Enable the GKE Filestore CSI driver."
+  type        = bool
+  default     = false
+}
